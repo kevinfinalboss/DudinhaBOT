@@ -7,7 +7,7 @@ module.exports = {
         let embed = new Discord.EmbedBuilder()
         .setColor("Random")
         .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL()})
-        .setDescription(`Oi Amor 🤤 ${message.author}, seu ping está em: \`carregando....\`.`)
+        .setDescription(`Oi Amor 🤤 ${message.author}, seu ping está em: \`carregando...\`.`)
 
         let embed2 = new Discord.EmbedBuilder()
         .setColor("Random")
