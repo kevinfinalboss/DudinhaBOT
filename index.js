@@ -1,3 +1,5 @@
+const Discord = require("discord.js")
+
 const client = new Discord.Client({ intents: [1, 512, 32768, 2, 128] });
 const config = require("./config.json");
 const fs = require("fs");
