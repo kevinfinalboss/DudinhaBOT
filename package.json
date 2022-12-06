@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kevinfinalboss/DudinhaBOT/issues"
   },
-  "homepage": "https://github.com/kevinfinalboss/DudinhaBOT#readme"
+  "homepage": "https://github.com/kevinfinalboss/DudinhaBOT#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
 }
