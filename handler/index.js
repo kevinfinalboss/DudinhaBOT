@@ -2,24 +2,29 @@ const fs = require("fs")
 
 module.exports = async (client) => {
 
-const SlashsArray = []
+    const SlashsArray = []
 
-  fs.readdir(`./commands`, (error, folder) => {
-  folder.forEach(subfolder => {
-    fs.readdir(`./commands/${subfolder}/`, (error, files) => { 
-  files.forEach(files => {
-      
-  if(!files?.endsWith('.js')) return;
-  files = require(`../commands/${subfolder}/${files}`);
-  if(!files?.name) return;
-  client.slashCommands.set(files?.name, files);
-   
-  SlashsArray.push(files)
-  });
+    fs.readdir(`./commands`, (error, folder) => {
+        folder.forEach(subfolder => {
+            fs.readdir(`./Comandos/${subfolder}/`, (error, files) => {
+                !files?.forEach(files => {
+
+                    if (!files?.endsWith('.js')) return;
+                    files = require(`../commands/${subfolder}/${files}`);
+                    if (!files?.name) return;
+                    client.slashCommands.set(files?.name, files);
+
+                    SlashsArray.push(files)
+                });
+            });
+        });
     });
-  });
-});
-  client.on("ready", async () => {
-  client.guilds.cache.forEach(guild => guild.commands.set(SlashsArray))
+    client.on("ready", async () => {
+        client.guilds.cache.forEach(guild => guild.commands.set(SlashsArray))
     });
+
+    client.on("guildCreate", async (guild) => {
+        guild.commands.set(SlashsArray)
+    });
+
 };
