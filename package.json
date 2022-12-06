@@ -4,7 +4,8 @@
   "description": "dudinha fazendo o que ela mais gosta",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/kevinfinalboss/DudinhaBOT#readme",
   "dependencies": {
     "discord.js": "^14.7.1",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "nodemon": "^2.0.20"
   }
 }
