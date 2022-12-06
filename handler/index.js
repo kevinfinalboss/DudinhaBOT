@@ -1,9 +1,7 @@
 const fs = require("fs")
-
 module.exports = async (client) => {
 
     const SlashsArray = []
-
     fs.readdir(`./commands`, (error, folder) => {
         folder.forEach(subfolder => {
             fs.readdir(`./Comandos/${subfolder}/`, (error, files) => {
