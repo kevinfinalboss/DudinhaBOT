@@ -1,0 +1,19 @@
+{
+  "name": "dudinhabot",
+  "version": "1.0.0",
+  "description": "dudinha fazendo o que ela mais gosta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinfinalboss/DudinhaBOT.git"
+  },
+  "author": "kevinfinalboss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinfinalboss/DudinhaBOT/issues"
+  },
+  "homepage": "https://github.com/kevinfinalboss/DudinhaBOT#readme"
+}
