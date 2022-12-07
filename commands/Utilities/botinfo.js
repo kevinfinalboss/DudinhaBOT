@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 module.exports = {
-  name: "infobot",
+  name: "botinfo",
   description: "Todas as informações do BOT Dudinha!", 
   type: Discord.ApplicationCommandType.ChatInput,
 
@@ -24,7 +24,7 @@ module.exports = {
     .setThumbnail(avatar_bot)
     .setDescription(`Olá ${interaction.user}, veja minhas informações abaixo:\n\n> 🤖 Nome: \`${bot}\`.\n> 🤖 Dono: ${client.users.cache.get(dono)}.
 \n> ⚙ Membros: \`${membros}\`.\n> ⚙ Servidores: \`${servidores}\`.\n> ⚙ Canais: \`${canais}\`.\n> ⚙ Ping: \`${ping}\`.
-\n> 📚 Linguagem de programação: \`${linguagem}\`.\n> 📚 Livraria: \`${livraria}\`.`);
+\n> 📚 FrameWork: \`${linguagem}\`.\n> 📚 Livraria: \`${livraria}\`.`);
 
     interaction.reply({ embeds: [embed] })
 
