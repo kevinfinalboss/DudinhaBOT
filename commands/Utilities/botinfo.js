@@ -6,7 +6,7 @@ module.exports = {
   type: Discord.ApplicationCommandType.ChatInput,
 
   run: async (client, interaction) => {
-    let dono = "906552238619639878"; // Coloque seu ID
+    let dono = "906552238619639878";
     let membros = client.users.cache.size;
     let servidores = client.guilds.cache.size;
     let canais = client.channels.cache.size;
