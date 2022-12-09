@@ -13,9 +13,7 @@ module.exports = {
         }
     ],
     run: async (client, interaction) => {
-
         let user = interaction.options.getUser("user")
-
         let ryan = new Discord.EmbedBuilder()
             .setColor("Blue")
             .setTitle(`${user.username}`)
