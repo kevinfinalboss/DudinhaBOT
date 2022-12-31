@@ -10,7 +10,7 @@ const {
   
   module.exports = {
     data: new SlashCommandBuilder()
-      .setName("letramusica")
+      .setName("lyrics")
       .setDescription("Exibe a letra de uma música")
       .addStringOption((options) =>
         options
@@ -24,6 +24,10 @@ const {
           .setDescription("Quem é o artista dessa música?")
           .setRequired(true)
       ),
+    /**
+     *
+     * @param {ChatInputCommandInteraction} interaction
+     */
     async execute(interaction) {
       const song = interaction.options.getString("song");
       const artist = interaction.options.getString("artist");
@@ -46,7 +50,7 @@ const {
                 value: `\`\`\`${artist}\`\`\``,
               },
               {
-                name: "Musica",
+                name: "Musica:",
                 value: `\`\`\`${song}\`\`\``,
               }
             );
