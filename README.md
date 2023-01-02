@@ -50,7 +50,7 @@ Você mesmo pode instalar e usar o bot já que se trata de um bot open source, c
 Instale todas as dependências 
 
 ```bash
-  npm install DudinhaBOT
+  npm i
   cd DudinhaBOT
 ```
 **Não esqueca de criar um arquivo config.json e colocar seu token e id de todos os canais caso ao contrário o bot não irá ligar!!**
