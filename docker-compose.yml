@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  bot:
+    build: .
+    command: node index.js
+    environment:
+      - DISCORD_TOKEN=dmjyXEIQp4+tnT8QLwNGGUz5fGlDL8IRIQzipFErsdQEBg5pED+tghKQTEmH7thnIHks6KiftxkyQ1rjpGbl3Z7PE20+TqPnSiwazlxc4kCVmAEwhxTZ8OLweYYS698
+    volumes:
+      - .:/app
+    working_dir: /app
+ 
