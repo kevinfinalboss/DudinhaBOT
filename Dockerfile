@@ -1,15 +1,14 @@
 FROM node:18-slim
-WORKDIR /usr/src/bot
 
+WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm install --only=production
+
+RUN npm ci --only=RUN npm ci --only=production && npm prune --production
 
 COPY . .
 
-
-EXPOSE 3000
-CMD ["node", "index.js"]
+CMD [ "npm", "run", "dev" ]
 
 LABEL maintainer="kevinfinalboss" \
       version="1.0.0" \
