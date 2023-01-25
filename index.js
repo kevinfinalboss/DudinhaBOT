@@ -24,7 +24,7 @@ client.on("ready", () => {
 })
 
 client.on("ready", () => {
-    let canalPing = client.channels.cache.get(`${config.canalping}`); // Colocar o id do canal de ping
+    let canalPing = client.channels.cache.get(`${config.canalping}`);
     if (!canalPing) return console.log(`Canal de ping do bot não encontrado`);
     canalPing.setName(`📡 Ping: Calculando...`);
     setInterval(() => {
@@ -37,7 +37,7 @@ client.on("ready", () => {
     const compact = users.toLocaleString("pt-BR", {
         notation: 'compact'
     });
-    let membro = client.channels.cache.get(`${config.canalmembros}`); // Colocar o id do canal de membros
+    let membro = client.channels.cache.get(`${config.canalmembros}`);
     if (!membro) return console.log(`Canal de membros do bot não encontrado`);
     membro.setName(`📡 Membros: Calculando...`);
     setInterval(() => {
@@ -46,7 +46,7 @@ client.on("ready", () => {
 })
 
 client.on("guildBanAdd", (member) => {
-    const channel = client.channels.cache.get("1012777260815765504");
+    const channel = client.channels.cache.get("865065506305212428");
     const embed = new Discord.EmbedBuilder()
     .setColor("#10fee4")
     .setThumbnail(`${client.user.displayAvatarURL({ size: 2048 })}`)
@@ -59,7 +59,7 @@ client.on("guildBanAdd", (member) => {
 
 
 client.on("guildBanRemove", (member) => {
-    const channel = client.channels.cache.get("1012777260815765504");
+    const channel = client.channels.cache.get("1041523085356044358");
     const embed = new Discord.EmbedBuilder()
     .setColor("#10fee4")
     .setThumbnail(`${client.user.displayAvatarURL({ size: 2048 })}`) 
