@@ -45,65 +45,29 @@ client.on("ready", () => {
     }, 1000 * 60 * 4);
 })
 
-client.on('messageUpdate', (message, newMessage, oldMessage) => {
-    if (message.author.bot) return;
-
-
-    const canalLogs = message.guild.channels.cache.get("1058621054307803227")
-
-
-    let usuárioMSGe = message.author.id;
-    let usuárioMSGf = message.author;
-    let ConteúdoAntigoMSG = message.content;
-    let ConteúdoNovoMSG = newMessage;
-    let CanalMSGEditada = message.channel;
-
-    const embed_editada = new Discord.EmbedBuilder()
-        .setTitle(`**Mensagem Editada**`)
-        .setColor("Black")
-        .setFooter({
-            text: `ID do usuário: ${usuárioMSGe}`
-        })
-        .setTimestamp(new Date())
-        .setDescription(`**📝 ${usuárioMSGf} editou uma mensagem de texto**\n\n**Canal:** ${CanalMSGEditada} \n\n**Antiga mensagem:** \n \`\`\`${ConteúdoAntigoMSG}\`\`\` \n\n**Nova mensagem:** \n \`\`\`${ConteúdoNovoMSG}\`\`\``)
-
-
-    try {
-
-        canalLogs.send({
-            embeds: [embed_editada]
-        })
-
-    } catch (e) {}
+client.on("guildBanAdd", (member) => {
+    const channel = client.channels.cache.get("1012777260815765504");
+    const embed = new Discord.EmbedBuilder()
+    .setColor("#10fee4")
+    .setThumbnail(`${client.user.displayAvatarURL({ size: 2048 })}`)
+    .setTitle(`<:1288discordrole:1028430849915498606> ‣ LOG | Usuario Banido.`)
+    .setDescription(`<:1288discordrole:1028430849915498606> ‣ Informações do usuario:\n > **Membro:${member.user}** \n > **ID:${member.user.id}**`)
+    .setFooter({ text:  `© ${client.user.username} 2023`})
+    .setTimestamp(new Date())
+    channel.send({ embeds: [embed] });
 })
 
-client.on('messageDelete', async (message) => {
 
-    const canalLogs = message.guild.channels.cache.get("1058621054307803227") // ID DO CANAL DE LOGS
-
-    if (message.author.bot) return;
-
-    let msgDelete = message.content;
-    const qmdeletou = message.author.id;
-    const canaldelatado = message.channel;
-
-    const embed_delete = new Discord.EmbedBuilder()
-        .setTitle(`**Mensagem Deletada**`)
-        .setColor("Black")
-        .setFooter({
-            text: `ID do usuário: ${qmdeletou}`
-        })
-        .setTimestamp(new Date())
-        .setDescription(`**📝 Mensagem de texto deletada**\n\n**Canal:** ${canaldelatado} \n\n**Mensagem:**\n \`\`\`${msgDelete}\`\`\``)
-
-
-    try {
-
-        canalLogs.send({
-            embeds: [embed_delete]
-        })
-
-    } catch (e) {}
+client.on("guildBanRemove", (member) => {
+    const channel = client.channels.cache.get("1012777260815765504");
+    const embed = new Discord.EmbedBuilder()
+    .setColor("#10fee4")
+    .setThumbnail(`${client.user.displayAvatarURL({ size: 2048 })}`) 
+    .setTitle(`<:1288discordrole:1028430849915498606> ‣ LOG | Usuario Desbanido.`)
+    .setDescription(`<:1288discordrole:1028430849915498606> ‣ Informações do usuario:\n > **Membro:${member.user}** \n > **ID:${member.user.id}**`)
+    .setFooter({ text:  `© ${client.user.username} 2023`})
+    .setTimestamp(new Date())
+    channel.send({ embeds: [embed] });
 })
 
 process.on("uncaughtException", (err) => {
