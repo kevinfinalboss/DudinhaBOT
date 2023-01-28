@@ -6,11 +6,11 @@ module.exports = {
     description: "Mostra todos os deuses do servidor",
     permission: PermissionFlagsBits.Administrator,
     dm: false,
-    exemple: "todos-admin",
+    exemple: "todos",
     category: "Administrador",
     cooldown: 5,
 
-    async run (client, interaction, args) {
+    async run(client, interaction, args) {
 
         let strFilter = interaction.guild.members.cache.filter(member => member.permissions.has(PermissionsBitField.Flags.Administrator))
         let strMap = strFilter.map(m => `> \`${m.user.id}\` - ${m.user}`).join("\n")
@@ -20,17 +20,17 @@ module.exports = {
             let strContent = strMap.substring(i, Math.floor(strMap.length, i + 1995));
 
             let embed = new EmbedBuilder()
-            .setColor("White")
-            .setThumbnail(`${client.user.avatarURL()}`)
-            .setTitle("Lista de membros com a permissão de  \`Administrador\`")
-            .setDescription(`Número de membros com permissão : \`${strFilter.size}\``)
-            .addFields(
-                { name: `Lista :`, value: `${strContent}`}
-            )
-            .setTimestamp()
+                .setColor("White")
+                .setThumbnail(`${client.user.avatarURL()}`)
+                .setTitle("Lista de membros com a permissão de  \`Administrador\`")
+                .setDescription(`Número de membros com permissão : \`${strFilter.size}\``)
+                .addFields(
+                    { name: `Lista :`, value: `${strContent}` }
+                )
+                .setTimestamp()
 
-            await interaction.reply({embeds: [embed]})
+            await interaction.reply({ embeds: [embed] })
         }
-            
+
     }
 }
