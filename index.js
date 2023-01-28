@@ -1,4 +1,6 @@
 const Discord = require("discord.js")
+const fs = require('fs');
+let blacklistedWords = fs.readFileSync('./blacklisted-words.txt', 'utf-8').split('\n');
 const config = require("./config.json")
 const client = new Discord.Client({
     intents: [
@@ -23,12 +25,14 @@ client.on("ready", () => {
     console.log(`🔥 Estou online em ${client.user.username}! e pronta para mamar 🤤`)
 })
 
-client.on('message', message => {
-    if (message.content.includes('curse word')) {
-        message.delete();
-        message.reply('Por favor, não use palavrões no servidor!');
+client.on('message', (message) => {
+    if (message.author.bot) return;
+    const foundWord = blacklistedWords.find(word => message.content.includes(word));
+    if (foundWord) {
+      message.delete();
+      message.reply('Não fale palavrões nos servidores, respeite os demais membros do server');
     }
-});
+  });
 
 client.on("ready", () => {
     let canalPing = client.channels.cache.get(`${config.canalping}`);
