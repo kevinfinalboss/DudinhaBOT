@@ -1,55 +1,47 @@
-const { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } = require("discord.js");
-const lyricsFinder = require("lyrics-finder");
+const Discord = require('discord.js');
+const fetch = require('node-fetch');
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName("lyrics")
-        .setDescription("Exibe a letra de uma música")
-        .addStringOption((options) => options
-            .setName("song")
-            .setDescription("Qual é a música?")
-            .setRequired(true))
-        .addStringOption((options) => options
-            .setName("artist")
-            .setDescription("Quem é o artista dessa música?")
-            .setRequired(true)),
+    name: 'letra',
+    description: 'Veja a letra de uma música.',
+    type: Discord.ApplicationCommandType.ChatInput,
+    options: [
+        {
+            name: 'artista',
+            description: 'Digite o nome do artista.',
+            type: Discord.ApplicationCommandOptionType.String,
+            required: true
+        },
+        {
+            name: 'musica',
+            description: 'Digite o nome da música.',
+            type: Discord.ApplicationCommandOptionType.String,
+            required: true
+        }
+    ],
 
-    async execute(interaction) {
-        const song = interaction.options.getString("song");
-        const artist = interaction.options.getString("artist");
-
+    async run(client, interaction) {
+        const artista = interaction.options.getString('artista');
+        const musica = interaction.options.getString('musica');
         try {
-            const lyrics = await lyricsFinder(artist, song);
-            const lyricsembed = new EmbedBuilder()
-                .setDescription(lyrics)
-                .setTitle(`Aqui está sua letra para **${song}**!`)
-                .setTimestamp()
-                .setAuthor({
-                    name: interaction.member.user.tag,
-                    iconURL: interaction.user.displayAvatarURL()
-                })
-                .setColor("Green")
-                .addFields(
-                    { name: "Artista:", value: artist },
-                    { name: "Música:", value: song }
-                );
+            const info = await fetch(`https://api.vagalume.com.br/search.php?art=${artista}&mus=${musica}`).then(res => res.json());
+            const letra = info.mus[0].text;
             interaction.reply({
-                embeds: [lyricsembed],
-                ephemeral: false
+                embeds: [
+                    new Discord.EmbedBuilder()
+                        .setTitle(`🎶 - Letra de ${info.mus[0].name} de ${info.art.name}`)
+                        .setDescription(`${letra.replace(/\r?\n/g, '\n')}`)
+                        .setColor('Random')
+                        .setFooter({
+                            text: "Fonte: Vagalume",
+                            iconURL:
+                              "https://www.vagalume.com.br/favicon.ico",
+                            })
+                ]
             });
         } catch (error) {
-            const errorEmbed = new EmbedBuilder()
-                .setTitle("⛔ Erro ao executar o comando")
-                .setColor("Red")
-                .setImage("https://media.tenor.com/fzCt8ROqlngAAAAM/error-error404.gif")
-                .addFields(
-                    { name: "Usuário:", value: interaction.user.username },
-                    { name: "Motivo:", value: "Música não encontrada. Tente novamente." }
-                );
-            interaction.reply({
-                embeds: [errorEmbed],
-                ephemeral: true
-            });
+            console.error(error);
+            interaction.reply('Ocorreu um erro ao tentar obter a letra da música.');
         }
     }
 };
