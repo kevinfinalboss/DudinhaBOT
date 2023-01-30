@@ -19,7 +19,8 @@ module.exports = {
         let caracteres = interaction.options.getNumber("caracteres")
         let senha = generator.generate({
             length: `${caracteres}`,
-            numbers: true
+            numbers: true,
+            symbols: true
         });
 
 
