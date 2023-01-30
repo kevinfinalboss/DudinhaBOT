@@ -38,6 +38,12 @@ module.exports = {
             .setDescription(`**O membro ${interaction.user} abraçou  ${user}.**`)
             .setImage(`${random1}`)
             .setColor("Random")
+            .setFooter({
+                text: "Desenvolvido por: kevinfinalboss",
+                iconURL:
+                    "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+            })
+            .setTimestamp()
 
         let button = new Discord.ActionRowBuilder()
             .addComponents(
@@ -52,7 +58,14 @@ module.exports = {
         let embed1 = new Discord.EmbedBuilder()
             .setDescription(`**${user} Retribuiu o abraço de ${interaction.user}.**`)
             .setColor("Random")
+            .setFooter({
+                text: "Desenvolvido por: kevinfinalboss",
+                iconURL:
+                    "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+            })
+            .setTimestamp()
             .setImage(`${random2}`);
+            
 
         interaction.reply({ embeds: [embed], components: [button] }).then(() => {
 

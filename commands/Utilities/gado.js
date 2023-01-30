@@ -24,8 +24,12 @@ let embedin = new Discord.EmbedBuilder()
     .setDescription(`🐂 ${pessoa} é \`${porcentagem}\`% Gado(a)...`)
     .setColor('Random')
     .setThumbnail('https://i.imgur.com/Z4xtqih.jpg')
-    .setFooter({ text: interaction.guild.name, iconURL: interaction.guild.iconURL({ dynamic: true})})
-    .setTimestamp(new Date());
+    .setFooter({
+        text: "Desenvolvido por: kevinfinalboss",
+        iconURL:
+            "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+    })
+    .setTimestamp()
 
     interaction.reply({embeds: [embedin]});
 

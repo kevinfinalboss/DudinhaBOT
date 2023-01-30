@@ -29,12 +29,22 @@ module.exports = {
             const embedS = new Discord.EmbedBuilder()
                 .setColor("Green")
                 .setDescription(`**Olá, ${interaction.user}!** Lembrete setado com sucesso para acabar <t:${tempoR}:R>.`)
-                .setFooter({ text: `Comando requisitado por: ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ format: "png" }) });
+                .setFooter({
+                    text: "Desenvolvido por: kevinfinalboss",
+                    iconURL:
+                        "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+                })
+                .setTimestamp()
 
             const embedL = new Discord.EmbedBuilder()
                 .setColor("Green")
                 .setDescription(`**Opa, ${interaction.user}!** Vim alertar-te sobre seu lembrete! Você pediu para ser lembrado sobre: \`${motivo}\`.`)
-                .setFooter({ text: `Comando requisitado por: ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ format: "png" }) });
+                .setFooter({
+                    text: "Desenvolvido por: kevinfinalboss",
+                    iconURL:
+                        "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+                })
+                .setTimestamp()
       
       
         interaction.reply({ embeds: [embedS] })

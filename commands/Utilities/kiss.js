@@ -34,6 +34,12 @@ module.exports = {
             .setDescription(`**${interaction.user} Deu um beijo em ${user}.**`)
             .setImage(`${random1}`)
             .setColor("Random")
+            .setFooter({
+                text: "Desenvolvido por: kevinfinalboss",
+                iconURL:
+                    "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+            })
+            .setTimestamp()
 
         const button = new ActionRowBuilder()
             .addComponents(
@@ -48,6 +54,12 @@ module.exports = {
             .setDescription(`**${user} Retribuiu o beijo de ${interaction.user}.**`)
             .setColor("Random")
             .setImage(`${random2}`)
+            .setFooter({
+                text: "Desenvolvido por: kevinfinalboss",
+                iconURL:
+                    "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+            })
+            .setTimestamp()
 
         await interaction.reply({ embeds: [firstEmbed], components: [button] })
 

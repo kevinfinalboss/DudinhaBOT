@@ -13,8 +13,12 @@ module.exports = {
     let embed_1 = new Discord.EmbedBuilder()
     .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
     .setDescription(`Oi meu amor 🤤 ${interaction.user}, Meu Ping Está Em: \`calculando...\`.`)
-    .setFooter({ text: `Requisitado Por: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
-    .setColor("FFFFFF");
+    .setFooter({
+      text: "Desenvolvido por: kevinfinalboss",
+      iconURL:
+          "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+  })
+  .setTimestamp()
 
     let embed_2 = new Discord.EmbedBuilder()
     .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
@@ -22,7 +26,12 @@ module.exports = {
                        Gateway: \`${gateway}ms\` (\`MS\`)
                        Shards: \`0\`**`)
     .setThumbnail(client.user.displayAvatarURL())
-    .setFooter({ text: `Requisitado Por: ${interaction.user.username}`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
+    .setFooter({
+      text: "Desenvolvido por: kevinfinalboss",
+      iconURL:
+          "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+  })
+  .setTimestamp()
     .setColor("FFFFFF");
 
     interaction.reply({ embeds: [embed_1] }).then( () => {
