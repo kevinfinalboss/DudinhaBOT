@@ -14,7 +14,7 @@ module.exports = {
     ],
     run: async (client, interaction) => {
         let user = interaction.options.getUser("user")
-        let ryan = new Discord.EmbedBuilder()
+        let infouser = new Discord.EmbedBuilder()
             .setColor("Blue")
             .setTitle(`${user.username}`)
             .setThumbnail(user.displayAvatarURL({ format: "png", dinamyc: true, size: 4096 }))
@@ -40,6 +40,6 @@ module.exports = {
                     inline: false,
                 },
         )
-        interaction.reply({ embeds: [ryan] })
+        interaction.reply({ embeds: [infouser] })
     }
 }
