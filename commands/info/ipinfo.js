@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
+const config = require("../../config.json")
 
 module.exports = {
     name: 'consultaip',
@@ -15,28 +16,43 @@ module.exports = {
     ],
 
     async run(client, interaction) {
-        const ip = interaction.options.getString('ip');
+        let ip;
         try {
-            const info = await fetch(`https://ipinfo.io/${ip}/json?token=88acddbffd36bd`).then(res => res.json());
+            ip = interaction.options.getString('ip');
+        } catch (error) {
+            interaction.reply('Ocorreu um erro ao obter o IP.');
+            return;
+        }
+
+        try {
+            const info = await fetch(`https://ipinfo.io/${ip}/json?token=${config.tokenip}`)
+                .then(res => res.json())
+                .catch(error => {
+                    console.error(error);
+                    interaction.reply('Ocorreu um erro ao realizar a requisição de informações do IP.');
+                    return;
+                });
+
+            if (!info) return;
+
             interaction.reply({
                 embeds: [
                     new Discord.EmbedBuilder()
                         .setTitle(`🔎 - Consulta finalizada`)
-                        .setDescription(`
-Host: ${info.hostname}
-País: ${info.country}
-Cidade: ${info.city}
-Região: ${info.region}
-Coordenadas: ${info.loc}
-Organização: ${info.org}
-Código Postal: ${info.postal}
-Timezone: ${info.timezone}`)
+                        .setDescription(`Host: ${info.hostname || 'Não disponível'}
+                    País: ${info.country || 'Não disponível'}
+                    Cidade: ${info.city || 'Não disponível'}
+                    Região: ${info.region || 'Não disponível'}
+                    Coordenadas: ${info.loc || 'Não disponível'}
+                    Organização: ${info.org || 'Não disponível'}
+                    Código Postal: ${info.postal || 'Não disponível'}
+                    Timezone: ${info.timezone || 'Não disponível'}`)
                         .setColor('Random')
                         .setFooter({
                             text: "Desenvolvido por: kevinfinalboss",
                             iconURL:
-                              "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
-                            })
+                                "https://avatars.githubusercontent.com/u/88814728?s=400&u=0bb6a0790758c0cc121c8aeafe2cd1237fa151f8&v=4",
+                        })
                 ]
             });
         } catch (error) {
