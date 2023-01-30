@@ -22,7 +22,7 @@ client.on('interactionCreate', (interaction) => {
 })
 
 client.on("ready", () => {
-    console.log(`🔥 Estou online em ${client.user.username}! e pronta para mamar 🤤`)
+    console.log(`🔥 Estou online em ${client.user.username}! 🤤`)
 })
 
 client.on('message', (message) => {
@@ -40,7 +40,7 @@ client.on("ready", () => {
     canalPing.setName(`📡 Ping: Calculando...`);
     setInterval(() => {
         canalPing.setName(`📡 Ping: ${client.ws.ping}ms`);
-    }, 1000 * 60 * 4);
+    }, 1000 * 60 * 2);
 })
 
 client.on("ready", () => {
@@ -53,7 +53,7 @@ client.on("ready", () => {
     membro.setName(`📡 Membros: Calculando...`);
     setInterval(() => {
         membro.setName(`📡 Membros: ${compact}`);
-    }, 1000 * 60 * 4);
+    }, 1000 * 60 * 1);
 })
 
 client.on("guildBanAdd", (member) => {
@@ -68,6 +68,9 @@ client.on("guildBanAdd", (member) => {
     channel.send({ embeds: [embed] });
 })
 
+client.on('ready', () => {
+    client.user.setActivity(`🎓 - Feito por kevinfinalboss `, { type: "PLAYING", url:"" }); 
+});
 
 client.on("guildBanRemove", (member) => {
     const channel = client.channels.cache.get("1041523085356044358");
