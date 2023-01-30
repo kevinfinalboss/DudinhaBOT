@@ -24,7 +24,7 @@ module.exports = {
 
 
         const mensagem = new Discord.EmbedBuilder()
-        .setTitle("Gerador de senha.")
+        .setTitle("Gerador de senha perfeito.")
         .setDescription(`O usuário ${interaction.user} gerou uma senha!.`)
         .setColor('Random')
 
