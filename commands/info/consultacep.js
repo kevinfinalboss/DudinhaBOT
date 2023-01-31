@@ -39,12 +39,13 @@ module.exports = {
                 });
                 return;
             }
-
+            const urlMaps = encodeURI(
+                `https://www.google.com/maps/search/?api=1&query=${response.data.logradouro} ${response.data.bairro}%2C${response.data.localidade}-${response.data.uf}`)
             interaction.reply({
                 embeds: [
                     new Discord.EmbedBuilder()
                         .setTitle(`🏠 - Busca de Endereço`)
-                        .setDescription(`Endereço: ${response.data.logradouro} ${response.data.bairro}, ${response.data.localidade} - ${response.data.uf}, ${response.data.cep}`)
+                        .setDescription(`Endereço: ${response.data.logradouro} ${response.data.bairro}, ${response.data.localidade} - ${response.data.uf}, ${response.data.cep} \n\n[Veja no Maps](${urlMaps})`)
                         .setColor('Random')
                         .setFooter({
                             text: "Desenvolvido por: kevinfinalboss",
