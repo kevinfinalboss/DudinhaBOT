@@ -8,6 +8,8 @@ RUN npm ci --only=RUN npm ci --only=production && npm prune --production
 
 COPY . .
 
+EXPOSE 80
+
 CMD [ "npm", "start"]
 
 LABEL maintainer="kevinfinalboss" \
