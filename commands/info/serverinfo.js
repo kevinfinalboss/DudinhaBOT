@@ -61,11 +61,7 @@ module.exports = {
                     value: `<@!${donoid}> \n\`\`${donoid}\`\``,
                     inline: true,
                 }
-        )
-        
-        
-        
-        
+            )
         interaction.reply({ embeds: [ryan] })
     }
 }
