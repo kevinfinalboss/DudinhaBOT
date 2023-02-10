@@ -20,7 +20,7 @@ client.on('interactionCreate', (interaction) => {
 })
 
 client.on("ready", () => {
-    console.log(`🔥 Estou online em ${client.user.username}! e pronta para mamar 🤤`)
+    console.log(`🔥 Estou online em ${client.user.username}!`)
 })
 
 
