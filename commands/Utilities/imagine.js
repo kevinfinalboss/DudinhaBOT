@@ -32,6 +32,7 @@ async function AI(prompt, value) {
 
     return Imagem;
 }
+
 module.exports = {
     name: "imagineimg",
     description: "[NSFW] Gere imagens através de textos.",
@@ -74,7 +75,7 @@ module.exports = {
     }
 };
 
-Client.on("interactionCreate", async interaction => {
+Client.once("interactionCreate", async interaction => {
     if (interaction.customId != 'Salvar') return;
     else {
         try {
