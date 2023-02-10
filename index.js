@@ -5,22 +5,40 @@ let blacklistedWords = fs.readFileSync('./blacklisted-words.txt', 'utf-8').split
 const config = require("./config.json");
 const { HTTPError } = require("discord.js");
 const apiKey = config.tokenbus;
+
 const client = new Discord.Client({
     intents: [
         Discord.GatewayIntentBits.Guilds
     ]
 });
 
+module.exports = client
+
+client.on('interactionCreate', (interaction) => {
+
+    if (interaction.type === Discord.InteractionType.ApplicationCommand) {
+
+        const cmd = client.slashCommands.get(interaction.commandName);
+
+        if (!cmd) return interaction.reply(`Error`);
+
+        interaction["member"] = interaction.guild.members.cache.get(interaction.user.id);
+
+        cmd.run(client, interaction)
+
+    }
+})
+
 client.on("ready", () => {
     console.log(`🔥 Estou online como ${client.user.username}! 🤤`);
-    
+
     let canalPing = client.channels.cache.get(config.canalping);
     if (!canalPing) return console.log(`Canal de ping do bot não encontrado`);
     canalPing.setName(`📡 Ping: Calculando...`);
     setInterval(() => {
         canalPing.setName(`📡 Ping: ${client.ws.ping}ms`);
     }, 1000 * 60 * 2);
-    
+
     let users = client.guilds.cache.map(g => g.memberCount).reduce((a, b) => a + b);
     const compact = users.toLocaleString("pt-BR", {
         notation: 'compact'
