@@ -14,21 +14,6 @@ const client = new Discord.Client({
 
 module.exports = client
 
-client.on('interactionCreate', (interaction) => {
-
-    if (interaction.type === Discord.InteractionType.ApplicationCommand) {
-
-        const cmd = client.slashCommands.get(interaction.commandName);
-
-        if (!cmd) return interaction.reply(`Error`);
-
-        interaction["member"] = interaction.guild.members.cache.get(interaction.user.id);
-
-        cmd.run(client, interaction)
-
-    }
-})
-
 client.on("ready", () => {
     console.log(`🔥 Estou online como ${client.user.username}! 🤤`);
 
